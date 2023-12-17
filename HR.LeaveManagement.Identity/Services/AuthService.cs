@@ -105,5 +105,4 @@ public class AuthService : IAuthService
 
         return jwtSecurityToken;
     }
-
 }

@@ -23,5 +23,4 @@ public class CreateLeaveAllocationValidator: AbstractValidator<CreateLeaveAlloca
         var leaveType = await _leaveTypeRepository.GetByIdAsync(id);
         return leaveType != null;
     }
-    
 }

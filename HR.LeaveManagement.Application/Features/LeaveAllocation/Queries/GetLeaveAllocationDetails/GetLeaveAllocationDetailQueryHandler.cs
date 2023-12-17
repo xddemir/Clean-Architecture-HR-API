@@ -9,8 +9,7 @@ public class GetLeaveAllocationDetailQueryHandler: IRequestHandler<GetLeaveAlloc
     private readonly IMapper _mapper;
     private readonly ILeaveAllocationeRepository _repository;
     private readonly IAppLogger<GetLeaveAllocationDetailQueryHandler> _logger;
-
-
+    
     public GetLeaveAllocationDetailQueryHandler(IMapper mapper, ILeaveAllocationeRepository repository, IAppLogger<GetLeaveAllocationDetailQueryHandler> logger)
     {
         _mapper = mapper;

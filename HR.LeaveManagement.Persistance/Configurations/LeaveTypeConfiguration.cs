@@ -16,8 +16,5 @@ public class LeaveTypeConfiguration: IEntityTypeConfiguration<LeaveType>
             DateCreated = DateTime.Now,
             DateModified = DateTime.Now
         });
-        
-        
-
     }
 }

@@ -22,12 +22,12 @@ public class ExceptionMiddleware
         }
         catch (Exception e)
         {
-            await HandleexceptionAsync(httpContext, e);
+            await HandleExceptionAsync(httpContext, e);
 
         }
     }
 
-    private async Task HandleexceptionAsync(HttpContext httpContext, Exception ex)
+    private async Task HandleExceptionAsync(HttpContext httpContext, Exception ex)
     {
         HttpStatusCode statusCode = HttpStatusCode.InternalServerError;
         CustomProblemDetails problem = new();
@@ -45,7 +45,15 @@ public class ExceptionMiddleware
                     Errors = badHttpRequestException.ValidationErrors
                 };
             break;
-            case DirectoryNotFoundException notFoundException:
+            case NotFoundException notFoundException:
+                statusCode = HttpStatusCode.BadRequest;
+                problem = new CustomProblemDetails()
+                {
+                    Title = notFoundException.Message,
+                    Status = (int)statusCode,
+                    Detail = notFoundException.InnerException?.ToString(),
+                    Type = nameof(notFoundException),
+                };
             break;
             default:
             break;
